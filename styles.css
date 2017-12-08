@@ -1,0 +1,225 @@
+/* Reset */
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  color: #444;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+ul {
+  list-style: none;
+}
+
+/* Grid */
+
+.col-6 {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.contact-container {
+  display: inline-block;
+  width: 23%;
+  border-bottom: 1px solid #DDD;
+  padding: 2rem;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+/* Modules */
+
+.warning {
+  display: none;
+  background-color: #f5f5f5;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.warning h2 {
+  margin: 1.5rem 0;
+  font-size: 2.5rem;
+  color: #444;
+  font-weight: 400;
+}
+
+.warning .find-letter {
+  font-weight: 700;
+}
+
+.no-contacts {
+  background-color: #f5f5f5;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.no-contacts h2 {
+  margin: 1.5rem 0;
+  font-size: 2.5rem;
+  color: #444;
+  font-weight: 400;
+}
+
+.btn {
+  color: #644A89;
+  border-radius: 0.5rem;
+  border: 1px solid #644A89;
+  padding: 1rem 1.5rem;
+}
+
+.btn:hover {
+  background-color: #644A89;
+  color: #fff;
+}
+
+.add {
+  font-size: 2rem;
+  background-color: inherit;
+}
+
+.edit {
+  display: inline-block;
+  margin-right: 2rem;
+  font-size: 1.5rem;
+}
+
+.delete {
+  display: inline-block;
+  font-size: 1.5rem;
+}
+
+[name='search'] {
+  border-radius: 0.5rem;
+  border: 1px solid #DDD;
+  font-size: 1.5rem;
+  padding: 0.5rem 1.5rem;
+}
+
+.buttons {
+  margin-top: 1rem;
+}
+
+/* Header */
+
+header {
+  text-align: center;
+  color: #fff;
+  background-color: #644A89;
+}
+
+header h1 {
+  font-size: 3.5rem;
+  padding: 2rem 0;
+}
+
+header h3 {
+  font-size: 2rem;
+  color: #CDBFE2;
+  font-weight: 100;
+  padding-bottom: 2rem;
+}
+
+/* Body */
+
+main {
+  max-width: 65vw;
+  margin: 0 auto;
+}
+
+main nav {
+  background-color: #F5F5F5;
+  padding: 1.5rem 0;
+  border: 1px solid #DDD;
+  margin-bottom: 2rem;
+}
+
+/* Contact Form */
+
+.contact-form {
+  display: none;
+}
+
+.contact-form h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 2.5rem 0 1rem 0;
+}
+
+.contact-form fieldset {
+  border: none;
+  border-top: 1px solid #DDD;
+  padding: 3rem 0 2rem 0;
+}
+
+.contact-form label {
+  font-weight: 700;
+  font-size: 1.5rem;
+  display: inline-block;
+  width: 25%;
+  text-align: right;
+  margin-right: 3rem;
+}
+
+.contact-form input {
+  display: inline-block;
+  width: 50%;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+  border: 1px solid #DDD;
+  font-size: 1.5rem;
+}
+
+.contact-form .buttons {
+  text-align: center;
+  margin: 0 auto;
+}
+
+.contact-form .btn {
+  font-size: 1.75rem;
+}
+
+.contact-form [type="submit"] {
+  margin-right: 2rem;
+}
+
+/* Contacts */
+
+.contacts {
+  margin-bottom: 2rem;
+}
+
+.contact-container h1 {
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+}
+
+.contact-container dt {
+  font-weight: 700;
+  padding: 0.25rem 0;
+}
+
+.contact-container dd {
+  padding: 0.25rem 0;
+}
+
+/* Footer */
+
+footer {
+  text-align: center;
+  border-top: 1px solid #DDD;
+  max-width: 65vw;
+  margin: 1.5rem auto;
+  font-size: 1.5rem;
+  padding-top: 1.5rem;
+}
