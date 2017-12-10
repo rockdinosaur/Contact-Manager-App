@@ -75,16 +75,13 @@ ul {
   border-radius: 0.5rem;
   border: 1px solid #644A89;
   padding: 1rem 1.5rem;
+  font-size: 2rem;
+  background-color: inherit;
 }
 
 .btn:hover {
   background-color: #644A89;
   color: #fff;
-}
-
-.add {
-  font-size: 2rem;
-  background-color: inherit;
 }
 
 .edit {
@@ -103,10 +100,6 @@ ul {
   border: 1px solid #DDD;
   font-size: 1.5rem;
   padding: 0.5rem 1.5rem;
-}
-
-.buttons {
-  margin-top: 1rem;
 }
 
 /* Header */
@@ -141,6 +134,10 @@ main nav {
   padding: 1.5rem 0;
   border: 1px solid #DDD;
   margin-bottom: 2rem;
+}
+
+[name="remove-filter"] {
+  display: none;
 }
 
 /* Contact Form */
@@ -182,15 +179,24 @@ main nav {
 
 .contact-form .buttons {
   text-align: center;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
 }
 
 .contact-form .btn {
   font-size: 1.75rem;
 }
 
+[name="tags"] {
+  display: inline-block;
+  margin-bottom: 2rem;
+}
+
 .contact-form [type="submit"] {
   margin-right: 2rem;
+}
+
+.specific-tag {
+  display: none;
 }
 
 /* Contacts */
@@ -213,6 +219,9 @@ main nav {
   padding: 0.25rem 0;
 }
 
+.contact-container .buttons {
+  margin-top: 1rem;
+}
 /* Footer */
 
 footer {

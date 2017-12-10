@@ -17,11 +17,24 @@
         <form action="index.html" method="post">
           <fieldset>
             <label for="name">Full Name:</label>
-            <input type="text" name="name">
+            <input type="text" name="name" required>
             <label for="email">Email:</label>
-            <input type="email" name="email">
+            <input type="email" name="email" required>
             <label for="telephone">Telephone Number:</label>
-            <input type="tel" name="telephone">
+            <input type="tel" name="telephone" required>
+
+            <label for="tags">Tags:</label>
+            <select name="tags">
+              <option value="Engineering">Engineering</option>
+              <option value="Sales">Sales</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Other">Other</option>
+            </select>
+
+            <div class="specific-tag">
+              <label for="specific-tag">Specify Tag:</label>
+              <input type="text" name="specific-tag" />
+            </div>
 
             <div class="buttons">
               <button class="btn" type="submit" name="submit">Submit</button>
@@ -35,6 +48,7 @@
         <nav>
           <div class="col-6">
             <button class="btn add" type="button" name="add">Add Contact</button>
+            <button class="btn" type="button" name="remove-filter">Remove Tag Filter</button>
           </div><!--
           --><div class="col-6">
             <input type="text" name="search" placeholder="Search"/>
@@ -69,6 +83,8 @@
             <dd>{{tel}}</dd>
             <dt>Email:</dt>
             <dd>{{email}}</dd>
+            <dt>Tag:</dt>
+            <dd><a class="tag" href="#">{{tag}}</a></dd>
           </dl>
           <div class="buttons">
             <button class="btn edit" type="button" name="edit">Edit</button>

@@ -1,8 +1,9 @@
 $(function() {
-  function Contact(name, email, tel, id) {
+  function Contact(name, email, tel, tag, id) {
     this.name = name;
     this.email = email;
     this.tel = tel;
+    this.tag = tag;
     this.id = String(id);
   }
 
@@ -29,16 +30,18 @@ $(function() {
         var contactName = $("[name='name']").val();
         var contactEmail = $("[name='email']").val();
         var contactTel = $("[name='telephone']").val();
+        var contactTag = self.getContactTag();
         if (self.editContactID) {
           self.contacts.forEach(function(contact) {
             if (contact.id === self.editContactID) {
               contact.name = contactName;
               contact.email = contactEmail;
               contact.tel = contactTel;
+              contact.tag = contactTag;
             }
           })
         } else {
-          self.addContact(contactName, contactEmail, contactTel);
+          self.addContact(contactName, contactEmail, contactTel, contactTag);
         }
         $(this).find("form").trigger("reset");
         self.hideContactForm();
@@ -71,6 +74,9 @@ $(function() {
         } else if ($target.hasClass("edit")) {
           self.editContactID = targetID;
           self.editContact(targetID);
+        } else if ($target.hasClass("tag")) {
+          self.displayContactsWithTag($target.text());
+          $("[name='remove-filter']").show();
         }
       })
 
@@ -95,11 +101,25 @@ $(function() {
           })
         }
       })
+
+      $("[name='tags']").change(function(e) {
+        if ($(this).val() === "Other") {
+          $(".specific-tag").show();
+        } else {
+          $(".specific-tag").hide();
+        }
+      })
+
+      $("[name='remove-filter']").click(function(e) {
+        e.preventDefault();
+        $(".contact-container").show();
+        $(this).hide();
+      })
     },
 
-    addContact: function(name, email, tel) {
+    addContact: function(name, email, tel, tag) {
       this.counter += 1;
-      this.contacts.push(new Contact(name, email, tel, this.counter));
+      this.contacts.push(new Contact(name, email, tel, tag, this.counter));
     },
 
     deleteContact: function(targetID) {
@@ -120,8 +140,44 @@ $(function() {
     },
 
     editContact: function(targetID) {
+      var currentContactName;
+      var currentContactEmail;
+      var currentContactTel;
+      var currentContactTag;
+      var selectableTags = [];
+
+      $("[name='tags'] option").each(function() {
+        selectableTags.push($(this).text());
+      });
+      selectableTags.pop();
+
+      this.contacts.forEach(function(contact) {
+        if (contact.id === this.editContactID) {
+          currentContactName = contact.name;
+          currentContactEmail = contact.email;
+          currentContactTel = contact.tel;
+          currentContactTag = contact.tag;
+        }
+      }, this)
+
+      if (!selectableTags.includes(currentContactTag)) {
+        $("[name='tags'] option").last().attr("selected", true);
+        $(".specific-tag").show();
+        $(".specific-tag [name='specific-tag']").val(currentContactTag);
+      } else {
+        $(".specific-tag").hide();
+        $("[name='tags'] option").each(function() {
+          if ($(this).text() === currentContactTag) {
+            $(this).attr("selected", true);
+          }
+        })
+      }
+
       $(".main-content").slideUp();
       $(".contact-form h1").text("Edit Contact");
+      $(".contact-form [name='name']").val(currentContactName);
+      $(".contact-form [name='email']").val(currentContactEmail);
+      $(".contact-form [name='telephone']").val(currentContactTel);
       slideUpShow($(".contact-form"));
     },
 
@@ -156,6 +212,24 @@ $(function() {
       this.displayMenuOrNot();
       this.renderContacts();
       slideUpShow($(".main-content"));
+    },
+
+    getContactTag: function() {
+      var $specifiedTag = $(".specific-tag");
+      if ($specifiedTag.filter(":visible").length > 0) {
+        return $specifiedTag.find("[name='specific-tag']").val();
+      } else {
+        return $("[name='tags']").val();
+      }
+    },
+
+    displayContactsWithTag: function(tag) {
+      $(".contact-container").hide();
+      $(".contact-container").each(function() {
+        if ($(this).find(".tag").text() === tag) {
+          $(this).show();
+        }
+      })
     },
 
     init: function() {
